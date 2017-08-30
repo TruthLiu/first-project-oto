@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		指定实现JPA的适配器，主要作用如下： 
+		1、取代persistence.xml中的<provider>
+		2、指定方言
+		3、通知“entityManagerFactory”产生什么样的entityManager 
+		4、还可以使用EclipseLinkJpaVendorAdapter(Toplink)，openJpaVendorAdapter 
+	-->
+	<bean id="hibernateJpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="databasePlatform" value="org.hibernate.dialect.OracleDialect" />
+	</bean>
+
+
+	<!-- JPA实体管理工厂的配置 使用@PersistenceContext会自动注入EntityManager,可以使用 @PersistenceUnit注入entityManagerFactory -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="persistenceUnitName" value="punit"></property>
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+		<property name="packagesToScan" value="com.oocl.pojo" /><!--待扫描的实体类包，不再需要persistence.xml了 -->
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

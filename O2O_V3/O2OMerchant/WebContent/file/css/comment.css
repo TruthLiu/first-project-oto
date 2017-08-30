@@ -1,0 +1,42 @@
+body {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    background-color: #f7f7f9;
+    padding-bottom: 50px;
+}
+
+textarea {
+    resize: none;
+    height: 150px !important;
+}
+
+.float-left {
+	text-align: left;
+    float: left;
+}
+
+.float-right {
+    text-align: right;
+    float: right;
+}
+
+.list-group-item > div:first-child {
+    padding-top: 7px;
+}
+
+.list-group-item > div:nth-last-child(2) > p.merchant-reply {
+    margin-top: 7px;
+    margin-right: 5px;
+    margin-bottom: 7px;
+    color: green;
+}
+
+.clear {
+    clear: both;
+}
+
+.glyphicon-star, .glyphicon-star-empty {
+    font-size: 1.5em;
+    color: #dab800;
+}

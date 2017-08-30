@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mercahnt Passed</title>
+	<link href="/O2OAdministrator/extjs4/resources/ext-theme-classic/ext-theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="/O2OAdministrator/extjs4/ext-all.js"></script>
+
+    <script type="text/javascript">
+    	var gridStore;
+	       // Creation of data model
+	      Ext.define('StudentDataModel', {
+	         extend: 'Ext.data.Model',
+	         fields: [
+	         {name: 'id', type:'int',mapping : 'id'},
+	         {name: 'name', type:'string',mapping : 'name'},
+	         {name: 'age', type:'int',mapping : 'age'},
+	         {name: 'marks',type:'float', mapping : 'marks'}
+	         ]
+	         ,proxy: {
+	                 type: 'rest',
+	                 url : 'http://localhost:3000/users'
+	             }
+	      });
+
+	      Ext.onReady(function(){
+	        
+	         // Creation of first grid store
+	         gridStore = Ext.create('Ext.data.Store', {
+	         model: 'StudentDataModel',
+	         proxy: {
+	                 type: 'rest',
+	                 url : 'http://localhost:3000/users'
+	             },
+	         
+	         autoLoad: true //可以使用store.load()取代
+	         });
+	        // gridStore.load({params:{start:0, limit:10}});
+
+	         // Creation of first grid
+	         Ext.create('Ext.grid.Panel', {
+	            id                : 'gridId',
+	            store             : gridStore,
+	            stripeRows        : true,
+	            title             : 'Students Grid', // Title for the grid
+	            renderTo          :'gridDiv', // Div id where the grid has to be rendered
+	            width             : 600,
+	            collapsible       : true, // property to collapse grid
+	            enableColumnMove  :true, // property which alllows column to move to different position by dragging that column.
+	            enableColumnResize:true, // property which allows to resize column run time.
+	            columns           :
+	               [{ 
+	                  header: "Student Name",
+	                  dataIndex: 'name',   
+	                  id : 'name',    
+	                  flex:  1,       // property defines the amount of space this column is going to take in the grid container with respect to all.  
+	                  sortable: true, // property to sort grid column data. 
+	                  hideable: true  // property which allows column to be hidden run time on user request.
+	               },{
+	                  header: "Age", 
+	                  dataIndex: 'age',
+	                  flex: .5, 
+	                  sortable: true,
+	                   hideable: false // this column will not be available to be hidden.
+	               },{
+	                  header: "Marks",
+	                  dataIndex: 'marks',
+	                  flex: .5, 
+	                  sortable: true, 
+	                  // renderer is used to manipulate data based on some conditions here who ever has marks greater than 75 will be displayed as 'Distinction' else 'Non Distinction'.
+	                  renderer :  function (value, metadata, record, rowIndex, colIndex, store) {
+	                     if (value > 75) {
+	                        return "Distinction";     
+	                     } else {
+	                        return "Non Distinction";
+	                     }
+	                  }
+	            }]
+	         });
+	         //
+	         Ext.create("Ext.Button",{
+	            text:'add data',
+	            renderTo:Ext.getElementById('john'),
+	            listeners:{
+	               'click':function(){
+	                  //-----load suc!
+	                  // StudentDataModel.load(1,{
+	                  //   success:function(s){
+	                  //     alert(s);
+	                  //   }
+	                  // });
+	                  //-----delete suc!
+	                  // var d=Ext.create('StudentDataModel',{id:6});
+	                  // d.erase();
+	                 //  -- use store load suc!!!
+	                 // var d=gridStore.load({'id':1});
+
+	                 //-- add success!!!
+	                  //var d=Ext.create('StudentDataModel',{name:'bai',age:10,marks:30});
+	                  //d.setId(null);
+	                  
+	                  // var d=new StudentDataModel({name:'johnyu',age:100,marks:22});
+	                  // d.setId(null);
+	                  // d.save({
+	                  //    scope:this,
+	                  //    success:function(x){
+	                  //       alert(x.id);
+	                  //       gridStore.add(x);
+	                  //    }
+	                  // });
+
+	                  //-- update success!!!
+	                  // var d=Ext.create('StudentDataModel',{id:8});
+	       
+	                  // d.set("name","tom");
+	                  // d.set("age","11");
+	                  // d.set("marks",56);
+	                  // d.save({
+	                  //    scope:this,
+	                  //    success:function(x){
+	                  //       alert(x.id);
+	                  //    }
+	                  // });
+
+	                  //---更新其中的某一项
+	                  // var a=gridStore.getAt(4);
+	                  // a.set("name","MikeLiu");
+	                  // a.save();
+
+	                  var a=gridStore.getAt(5);
+	                  
+	                  a.erase();
+
+	                  
+	               }
+	            }
+	         })
+
+
+
+	      });
+
+    </script>
+</head>
+<body>
+<h1>111</h1>
+<div id="john" align="center"></div>
+   <div id = "gridDiv" align="center"></div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script
+	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/home.css">
+<style type="text/css">
+#container {
+	overflow: hidden;
+}
+
+#left {
+	background-color: #EFF1FA;
+	height: 1130px;
+	margin-bottom: -230px;
+	float: left;
+}
+
+#content {
+	float: right;
+	height: 900px;
+}
+
+.clear {
+	clear: both;
+}
+#wrapper{
+    background-color: gray;
+    width: 100%;
+    margin: 0px auto;
+}
+#main-nav{
+	margin-top:20px;
+}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="navbar navbar-duomi navbar-static-top" role="navigation"
+			style="margin-top: 15px;" id="head">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" id="logo">O2O Administractor </a>
+				</div>
+				 <div style="margin-right: 130px;">
+		            <ul class="nav navbar-nav navbar-right">
+		                <li><a>user: Admin</a></li>
+		                <li><a id="logout" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> &nbsp;&nbsp;Log out</a></li> 
+		            </ul>
+		        </div>
+			</div>
+		</div>
+		<div id="container">
+				<div class="col-md-2" id="left">
+					<ul id="main-nav" class="nav nav-tabs nav-stacked">
+						<li><a href="#systemSetting" class="nav-header collapsed"
+							data-toggle="collapse"><i class="glyphicon glyphicon-cog"></i>
+								Merchant Manager <span
+								class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+							<ul id="systemSetting" class="nav nav-list collapse secondmenu"
+								style="height: 0px;">
+								<li><a href="javascript:void(0)" id="pass"><i class="glyphicon glyphicon-user"></i>
+										Passed</a></li>
+								<li><a href="javascript:void(0)" id="inprocess"><i class="glyphicon glyphicon-edit"></i>
+										Inprocess</a></li>
+								<li><a href="javascript:void(0)" id="reject"><i class="glyphicon glyphicon-eye-open"></i>
+										Reject</a></li>
+							</ul></li>
+						
+						<li><a href="#systemSetting2" class="nav-header collapsed"
+							data-toggle="collapse"> <i class="glyphicon glyphicon-globe"></i>
+								Advertisement Manager<span
+								class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+							<ul id="systemSetting2" class="nav nav-list collapse secondmenu"
+								style="height: 0px;">
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-user"></i>
+										Search</a></li>
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon-edit"></i>
+										Process</a></li>
+							</ul></li>
+						<li><a href="#systemSetting3" class="nav-header collapsed"
+							data-toggle="collapse"> <i class="glyphicon glyphicon-fire"></i>
+								Complaint Manager<span
+								class="pull-right glyphicon glyphicon-chevron-down"></span>
+						</a>
+							<ul id="systemSetting3" class="nav nav-list collapse secondmenu"
+								style="height: 0px;">
+								<li><a href="javascript:void(0)"><i class="glyphicon glyphicon glyphicon-edit"></i>
+										Search</a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<div class="col-md-10" id="content">
+					<iframe frameborder="1" width="100%" height="100%" src="login.html" id="iframe">
+					</iframe>
+				</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</body>
+</html>

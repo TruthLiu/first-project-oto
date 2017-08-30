@@ -1,0 +1,89 @@
+.glyphicon-star, .glyphicon-star-empty {
+    color: #dab800;
+}
+
+.panel-comment-stars .glyphicon {
+    margin-left: 5px;
+}
+
+.dropdown-menu>li>form>button:focus, .dropdown-menu>li>form>button:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu>li>form>button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.container > *:first-child > *:first-child {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+    height: 100px !important;
+}
+
+.container .panel .panel-body .panel-float-left {
+    float: left;
+}
+
+.container .panel .panel-body .panel-float-right {
+    float: right;
+    text-align: right;
+}
+
+.container .panel .panel-body .panel-float-left > h3 > span {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.container .panel .panel-body .panel-float-right > h5 {
+    font-size: 1.2em;
+}
+
+.container .panel .panel-footer > .receiver-info {
+    float: left;
+    padding-top: 7px;
+}
+
+.container .panel .panel-footer > .order-operations {
+    float: right;
+    text-align: right;
+}
+
+.container .panel .panel-footer > .order-operations > a {
+    margin-left: 5px;
+}
+
+#comment-form > h4 > i {
+    cursor: pointer;
+}
+
+.clear {
+    clear: both;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0;
+}

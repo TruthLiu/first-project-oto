@@ -1,0 +1,40 @@
+function AjaxOperator(){
+    this.sendGet=function(url,fndone,fnfail){
+        $.ajax({
+            type:"GET",
+            url:url,
+            dataType:"json"
+        }).done(function(data){
+            fndone(data);
+        }).fail(function(error){
+            fnfail(error);
+        });
+    }
+    
+    this.sendPost=function(url,paramObj,fndone,fnfail){
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:JSON.stringify(paramObj),
+            dataType:"json",
+            contentType:"application/json"
+        }).done(function(data){
+            fndone(data);
+        }).fail(function(error){
+            fnfail(error);
+        });
+    }
+    
+    this.sendDelete=function(url,fndone,fnfail){
+         $.ajax({
+            type:"DELETE",
+            url:url,
+            dataType:"json"
+        })
+        .done(function(data){
+            fndone(data);
+        }).fail(function(error){
+            fnfail(error);
+        });
+    }
+}

@@ -1,0 +1,179 @@
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0;
+    z-index: 1;
+    display: none;
+}
+
+.glyphicon-star, .glyphicon-star-empty {
+    color: #dab800;
+}
+
+.header-stars > .glyphicon {
+    margin-right: 5px;
+}
+
+.dropdown-menu>li>form>button:focus, .dropdown-menu>li>form>button:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu>li>form>button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.mouse-pointer {
+    cursor: pointer;
+}
+
+.mouse-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron > .container > .row > *:nth-child(2) {
+    text-align: right;
+}
+
+.shop-logo {
+    width: 280px;
+    height: 280px;
+}
+
+.thumbnail > .dish-img {
+    width: 110px;
+    float: left;
+}
+
+.thumbnail > .dish-info {
+    float: right;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.thumbnail img~a {
+    width: 100%;
+}
+
+.thumbnail .caption {
+    text-align: right;
+}
+
+.add-to-cart span {
+    margin-right: 5px;
+}
+
+#main-content .panel {
+    margin: 0 15px;
+}
+
+#fixed-btns {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+#cart-menu {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    height: 100%;
+    width: 400px;
+    background-color: #dedede;
+    z-index: 1000;
+}
+
+#cart-menu > div:first-child {
+    position: absolute;
+    top: 10px;
+}
+
+#cart-menu > div:first-child > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.5em;
+}
+
+#cart-menu > div:first-child > a:hover {
+    text-decoration: none;
+}
+
+#cart-menu .list-group {
+    overflow-y: auto;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+}
+
+#cart-menu .cart-item-img {
+    float: left;
+    width: 110px;
+}
+
+#cart-menu .cart-item-img > img {
+    width: 100%;
+    height: 100px;
+}
+
+#cart-menu .cart-item-info {
+    float: left;
+}
+
+#cart-menu .cart-item-ops {
+    float: right;
+    width: 120px;
+    text-align: right;
+    padding-top: 12px;
+}
+
+#cart-menu .cart-item-ops > *:first-child {
+    margin-bottom: 10px;
+}
+
+#cart-menu > div:last-child {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+#cart-menu > div:last-child > .panel {
+    margin-bottom: 0;
+}
+
+#cart-menu > div:last-child > a[role=button] {
+    width: 100%;
+    height: 50px;
+    padding-top: 15px;
+}
+
+.clear {
+    clear: both;
+}

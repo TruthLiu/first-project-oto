@@ -1,0 +1,97 @@
+.alert {
+    display: none;
+}
+
+.item-success {
+    background-color: #dff0d8;
+}
+
+.item-info {
+    background-color: #d9edf7;
+}
+
+.item-primary {
+    background-color: #337ab7;
+}
+
+.item-warning {
+    background-color: #fcf8e3;
+}
+
+.item-danger {
+    background-color: #f2dede;
+}
+
+.item-success h4 span {
+    color: #3c763d;
+}
+
+.item-info h4 span {
+    color: #31708f;
+}
+
+.item-primary h4 span {
+    color: #fff;
+}
+
+.item-warning h4 span {
+    color: #8a6d3b;
+}
+
+.item-danger h4 span {
+    color: #a94442;
+}
+
+.dropdown-menu>li>form>button:focus, .dropdown-menu>li>form>button:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.dropdown-menu>li>form>button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+    text-align: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.container > .list-group > .list-group-item:hover {
+    background-color: #eeeeee;
+}
+
+.container > .list-group > .list-group-item > a {
+    display: block;
+    color: black;
+}
+
+.container > .list-group > .list-group-item .float-left > h3 {
+    margin-top: 10px;
+}
+
+.container > .list-group > .list-group-item .float-right {
+    padding-top: 10px;
+}

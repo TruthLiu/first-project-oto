@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <script src="../js/third/jquery-3.2.1.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/page.css">
+    <title>Home Page</title>
+    <style>
+        #processMer tr td:nth-child(odd){
+            text-align: right;
+            width: 160px;
+            font-size: 18px;
+            font-style:oblique;
+        }
+        body{
+        	background-color: #E6EAF8;
+        }
+        .btn1 {margin:2px;  width:120px; height:50px; border:#F00 1px; background:#003366; color:#FFF; border-radius:3px; font-size:18px}
+		.btn2 {margin:2px;  width:120px; height:50px; border:#F00 1px; background:#3399CC; color:#FFF; border-radius:3px; font-size:18px}
+		.btn3 {margin:2px;  width:120px; height:50px; border:#F00 1px; background:#006699; color:#FFF; border-radius:3px; font-size:18px}
+    </style>
+</head>
+<body>
+	<div style="margin-top: 15px;">
+		<div style="text-align:center">
+			<button class="btn1" id="passed"> Pass </button>
+			<button class="btn2" id="inprocess"> In Process<font id="pendCount" style="color:red;"></font> </button>
+			<button class="btn3" id="reject"> Reject </button>
+		</div>
+		<div id="a1" style="width:600px; display:table; margin-left:auto; margin-right:auto;" >
+	        <table id="tab" class="table table-hover">
+	         
+	        </table>
+	    </div>
+	</div>
+    
+     <!-- 审核模态框 -->
+	<div class="modal fade" id="processModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Process Page</h4>
+	      </div>
+	      <div class="modal-body form-group">
+	        <table class="table" id="processMer">
+	        	<input type="hidden" id="processId" value=""/>
+	            <tr>
+	                <td>ID-Card：</td>
+	                <td><div class="col-sm-10"><img src="" width="250px" height="150px"></div></td>
+	            </tr>
+	            <tr>
+	                <td>Head：</td>
+	                <td><div class="col-sm-10"><img src="" width="250px" height="150px"></div></td>
+	            </tr>
+	            <tr>
+	                <td>Name：</td>
+	                <td><div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div></td>
+	            </tr>
+	            <tr>
+	                <td>Address：</td>
+	                <td>
+	                    <div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>Approval：</td>
+	                <td><div class="col-sm-10">
+	                    <select id="usertype" name="usertype" class="show-tick form-control">
+	                        <option value="1" selected="selected">Approved</option>
+	                        <option value="2">Rejected</option>
+	                    </select></div>
+	                </td>
+	            </tr>
+	            <tr id="rejectReason">
+	                <td>Rejected-Reason：</td>
+	                <td><div class="col-sm-10">
+	                    <textarea rows="6" cols="42" id="reasonText" class="form-control" name="bcontent" placeholder="Under 100 words"></textarea>
+	                    </div>
+	                </td>
+	            </tr>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-primary" id="submitProcess">Submit</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+    
+    <!-- 查看详情modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Detail Page</h4>
+	      </div>
+	      <div class="modal-body">
+	        <table class="table" id="processMer">
+	            <tr>
+	                <td>ID-Card：</td>
+	                <td><div class="col-sm-10"><img src="" width="250px" height="150px"></div></td>
+	            </tr>
+	            <tr>
+	                <td>Head：</td>
+	                <td><div class="col-sm-10"><img src="" width="250px" height="150px"></div></td>
+	            </tr>
+	            <tr>
+	                <td>Name：</td>
+	                <td><div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div></td>
+	            </tr>
+	            <tr>
+	                <td>Address：</td>
+	                <td><div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div></td>
+	            </tr>
+	            <tr>
+	                <td>Status：</td>
+	                <td><div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div></td>
+	            </tr>
+	            <tr>
+	                <td>Is-Banded：</td>
+	                <td><div class="col-sm-10"><input type="text" class="form-control" disabled="disabled"/></div></td>
+	            </tr>
+	        </table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">ViewProcessRe</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	    
+    
+    <script src="../js/ajax.js"></script>
+    <script src="../js/tableOperator.js"></script>
+    <script src="../js/homepage.js" > </script>
+</body>
+</html>

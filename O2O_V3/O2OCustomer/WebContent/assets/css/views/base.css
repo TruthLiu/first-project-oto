@@ -1,0 +1,13 @@
+body {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    background-color: #f7f7f9 !important;
+/*    background-color: green !important;*/
+    padding-bottom: 50px;
+}
+
+.jumbotron {
+    background-color: #eee !important;
+/*    background-color: red !important;*/
+}

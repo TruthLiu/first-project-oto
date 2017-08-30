@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mercahnt Passed</title>
+	<link href="/O2OAdministrator/extjs4/resources/ext-theme-classic/ext-theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="/O2OAdministrator/extjs4/ext-all.js"></script>
+
+    <script type="text/javascript">
+    	var gridStore;
+    	Ext.define('MerchantModel',{
+    		extend: 'Ext.data.Model',
+    		fields: [
+    			{name: 'name', type: 'string', mapping: 'name'},
+    			{name: 'shopname', type: 'string', mapping: 'shopname'},
+    			{name: 'address', type: 'string', mapping: 'address'}
+    		],
+    		proxy: {
+    			type: 'rest',
+    			url: 'http://localhost:9090/O2OAdministrator/pass'
+    		}
+    	});
+
+    	Ext.onReady(function(){
+    		gridStore = Ext.create('Ext.data.Store', {
+    			model: 'MerchantModel',
+    			proxy: {
+    				type: 'rest',
+    				url: 'http://localhost:9090/O2OAdministrator/pass'
+    			},
+    			autoLoad: true
+    		});
+
+    		Ext.create({
+    			xtype: 'grid',
+    			store: gridStore,
+    			stripeRows: true,
+    			title: 'Merchant Passed',
+    			renderTo: 'gridDiv',
+    			width: 600,
+    			collapsible: true,
+    			enableColumnMove: true,
+    			enableColumnResize: true,
+    			columns: [{
+    				header: 'Name',
+    				dataIndex: 'name',
+    				id: 'name',
+    				flex: 1,
+    				sortable: true,
+    				hideable: true
+    			}, {
+    				header: 'ShopName',
+    				dataIndex: 'shopname',
+    				id: 'shopname',
+    				flex: 2,
+    				sortable: true,
+    				hideable: true
+    			}, {
+    				header: 'Address',
+    				dataIndex: 'address',
+    				id: 'address',
+    				flex: 2,
+    				sortable: true,
+    				hideable: true
+    			}, {
+    				text: 'detail',
+    				renderer: function(){
+    					return '<button></button>';
+    				}
+    			}],
+    			listeners: {
+    				itemdblclick: function(me, record, item, index, e, eOpts){
+    					Ext.create({
+				               xtype:'panel',
+				               renderTo: Ext.getBody(),
+				               height: 200,
+				               width: 400,
+				               modal:true,
+				               floating:true,
+				               title:'detail',
+				               closable:true,
+				               items:[
+						               {xtype:'textfield',fieldLabel:'name',value:record.get("name")},
+						               {xtype:'textfield',fieldLabel:'age',value:record.get("shopname")},
+						               {xtype:'textfield',fieldLabel:'marks',value:record.get("address")},
+						               {xtype:'button',html:'cancel'},
+						               {xtype:'button',html:'update',listeners:{
+						                  'click':function(){
+
+						                  }
+						               }}
+				               ]
+				            });
+    				}
+    			}
+    		});
+
+
+    	});
+
+    </script>
+</head>
+<body>
+	<h1>jason</h1>
+   	<div id = "gridDiv" align="center"></div>
+</body>
+</html>

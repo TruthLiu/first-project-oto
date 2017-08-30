@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="/O2OAdministrator/extjs4/resources/ext-theme-classic/ext-theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="/O2OAdministrator/extjs4/ext-all.js"></script>
+</head>
+<body>
+	<div id="adverGrid"></div>
+	<script type="text/javascript">
+	var gridStore;
+	Ext.onReady(function () {
+		var aj = new ExtAjaxOperator();
+		aj.sendPost("search", {}, function(response){
+			alert(response.responseText);
+		}, function(response){
+			
+		})
+		
+		Ext.define('StudentDataModel', {
+	         extend: 'Ext.data.Model',
+	         fields: [
+		         {name: 'mid', type:'string',mapping : 'mid'},
+		         {name: 'img', type:'string',mapping : 'img'},
+		         {name: 'price',type:'float', mapping : 'price'}
+		         {name: 'status',type:'int', mapping : 'status'}
+		         {name: 'recommend',type:'int', mapping : 'recommend'}
+		         {name: 'createTime',type:'date', mapping : 'createTime'}
+	         ]
+	      });
+		
+		gridStore = Ext.create('Ext.data.Store', {
+	         model: 'StudentDataModel',
+	        // data:myData
+	         //proxy: {
+                // type: 'ajax',
+                // url : 'http://localhost:3000/users'
+             	//},
+			});
+		
+		Ext.create('Ext.grid.Panel', {
+            id : 'gridId',
+            store : gridStore,
+            stripeRows : true,
+            title : 'Students Grid', // Title for the grid
+            renderTo :'adverGrid', // Div id where the grid has to be rendered
+            width : 600,
+            collapsible : true,
+            enableColumnMove :true,
+            enableColumnResize:true,
+            columns           :
+               [{ 
+                  header: "Student Name",
+                  dataIndex: 'name',   
+                  id : 'name',    
+                  flex:  1,   
+                  sortable: true,  
+                  hideable: true  
+               },{
+                  header: "Age", 
+                  dataIndex: 'age',
+                  flex: .5, 
+                  sortable: true,
+                   hideable: false 
+               },{
+                  header: "Marks",
+                  dataIndex: 'marks',
+                  flex: .5, 
+                  sortable: true, 
+                  renderer :  function (value, metadata, record, rowIndex, colIndex, store) {
+                     if (value > 75) {
+                        return "Distinction";     
+                     } else {
+                        return "Non Distinction";
+                     }
+                  }
+            }]
+         });
+	});
+	</script>
+</body>
+</html>

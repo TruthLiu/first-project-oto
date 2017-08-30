@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body{
+            margin-left:auto;  
+            margin-right:auto; 
+            margin-TOP:100PX;
+            background-color: #E6EAF8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-sm-offset-3 text" >
+            <h1 style="text-align: center"><strong>Administrator System</strong></h1>
+        </div>
+    </div><br/>
+    <div class="row" >
+        <div class="col-sm-5 col-sm-offset-3 form-box" style="border: 1px solid gray; border-radius:16px; padding: 30px; margin-top: 20px"><br/>
+            <div class="form-bottom">
+			    <form role="form" action="login" method="post" class="login-form">
+			         <div class="input-group">
+			             <span class="glyphicon glyphicon-user input-group-addon"></span>
+			             <input name="name" type="text" placeholder="Username..." class="form-username form-control" id="form-username">
+			         </div><br/>
+			         <div class="input-group">
+			             <span class="glyphicon glyphicon-lock input-group-addon"></span>
+			             <input name="pwd" type="password" placeholder="Password..." class="form-password form-control" id="form-password">
+			         </div><br/><br/>
+			         <div class="col-md-12" style="margin-left: 40%">
+                        <input type="submit" class="btn btn-primary" value="Log in"/>
+                     </div>         
+			    </form>
+			         
+		    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

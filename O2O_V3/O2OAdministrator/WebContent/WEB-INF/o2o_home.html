@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="/O2OAdministrator/extjs4/resources/ext-theme-classic/ext-theme-classic-all.css" rel="stylesheet" />
+    <script type="text/javascript" src="/O2OAdministrator/extjs4/ext-all.js"></script>
+</head>
+<body>
+	<div id="container">
+    </div>
+
+	<script type="text/javascript">
+		Ext.onReady(function () {
+            var leftPanel = Ext.create('Ext.panel.Panel',{
+                        title: 'Manager Tab',
+                        region: 'west',
+                        xtype: 'panel',
+                        margins: '0 0 5 5',
+                        width: 200,
+                        collapsible: true,   // 可折叠/展开
+                        id: 'west-region-container',
+                        layout: 'fit',
+                        items: [{
+                            xtype: 'treepanel',
+                            title: 'merchant manager',
+                            width: 200,
+                            collapsible: true,
+                            // autoScroll:true,
+                            rootVisible: false,
+                            listeners: {
+                                itemclick: function(view, record, item, index, e, eOpts){
+                                    var id = record.get('id');
+                                    //alert(record.raw.url);
+                                    // alert(id);
+                                    // Ext.getCmp('centerPanel').remove(0);
+                                    var tab = Ext.getCmp(id);
+                                    if(!tab){
+                                         centerPanel.add(0,{  
+                                                title: id,  
+                                                id: id,  
+                                                html: '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="'+record.raw.url+'"> </iframe>',  
+                                                closable: true  
+                                            });
+                                         centerPanel.setActiveTab(id);
+                                    }else {
+                                        centerPanel.setActiveTab(id);
+                                    }
+                                    
+                                }
+                            },
+                            root: {
+                                    expanded: true,
+                                    children: [{
+                                                    text: "pass",
+                                                    leaf: true,
+                                                    id: 'pass',
+                                                    url:'/sec/merchant/pass' 
+                                                },{ text: "in process",
+                                                    leaf: true,
+                                                    id: 'inprocess',
+                                                    url:'/sec/merchant/inprocess'
+                                                },{ text: "reject", 
+                                                    leaf: true,
+                                                    id: 'reject',
+                                                    url:'/sec/merchant/reject'
+                                                }
+                                    ]
+                            }
+                        },{
+                            xtype: 'treepanel',
+                            title: 'advertisement manager',
+                            width: 200,
+                            collapsible: true,
+                            autoScroll:true,
+                            rootVisible: false,
+                            listeners: {
+                                itemclick: function(view, record, item, index, e, eOpts){
+                                    var id = record.get('id');
+                                    //alert(record.raw.url);
+                                    var tab = Ext.getCmp(id);
+                                    if(!tab){
+                                         centerPanel.add(0,{  
+                                                title: id,  
+                                                id: id,  
+                                                html: '<iframe scrolling="auto" frameborder="0" width="100%" height="100%" src="'+record.raw.url+'"> </iframe>',  
+                                                closable: true  
+                                            });
+                                         centerPanel.setActiveTab(id);
+                                    }else {
+                                        centerPanel.setActiveTab(id);
+                                    }
+                                    
+                                }
+                            },
+                            root: {
+                                    expanded: true,
+                                    children: [{
+                                                    text: "search",
+                                                    leaf: true,
+                                                    id: 'search', 
+                                                    url:'adver/search'
+                                                },{ text: "process",
+                                                    leaf: true,
+                                                    id: 'process',
+                                                    url:'adver/process'
+                                                }
+                                    ]
+                                }
+                        },{
+                            xtype: 'treepanel',
+                            title: 'complaint manager',
+                            width: 200,
+                            collapsible: true,
+                            autoScroll:true,
+                            rootVisible: false,
+                            root: {
+                                    expanded: true,
+                                    children: [{
+                                                    text: "pass",
+                                                    leaf: true,
+                                                    id: 'm_pass' 
+                                                },{ text: "in process",
+                                                    leaf: true,
+                                                    id: 'm_inprocess' 
+                                                },{ text: "reject", 
+                                                    leaf: true,
+                                                    id: 'm_reject'
+                                                }
+                                    ]
+                                }
+                        }]
+                    }); 
+
+            var northPanel=Ext.create('Ext.panel.Panel', {
+                        title: 'O2O A',
+                        region: 'north',     // 所在的位置
+                        xtype: 'panel',
+                        height: 100,
+                        split: true,         // 允许调整大小
+                        margins: '0 5 0 5',
+                        collapsible: true,
+                        html: '<br><center><font size=5>Welcome to O2O administrator</font><br><font size=2>demo</font></center>'
+                    }); 
+            var centerPanel=new Ext.TabPanel({
+                        // title: 'Center Region',
+                        id: 'center_panel',
+                        region: 'center',     // 必须指定中间区域
+                        xtype: 'panel',
+                        layout: 'fit',
+                        defaults: { autoScroll: true },
+                        items: [
+                            {id: 'tabId1', title: 'tab1', html: 'tab1 content', closable: true, layout: 'fit'},
+                            // {id: 'tabId2', title: 'tab2', html: 'tab1 content', closable: true, layout: 'fit'}
+                        ]
+                    }); 
+
+            new Ext.Viewport({
+                title: "Viewport",
+                layout: "border", //这里是（border）边界布局
+                defaults: {
+                    bodyStyle: "background-color: #FFFFFF;",
+                    frame: true
+                },
+                renderTo: 'container',
+                items: [
+                            leftPanel, //这里是（accordion）手风琴布局
+                            northPanel,
+                            centerPanel
+                        ]
+            });
+        });  
+	</script>
+</body>
+</html>
